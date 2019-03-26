@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Library</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</head>
+<body>
+
+<section class="hero is-primary is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Library
+            </h1>
+            <h2 class="subtitle">
+                A JS app to store objects
+            </h2>
+        </div>
+    </div>
+</section>
+<section class="hero is-primary">
+    <div class="hero-body" style="min-height: calc(100vh - 160px);">
+        <div class="container">
+            <form action="" style="min-height: 80px; text-align: center">
+                <div class="is-inline-block">
+                    <div class="field is-inline-block book-error">
+                        <label class="label">Book Name</label>
+                        <div class="control">
+                            <input class="input book-name" type="text" placeholder="e.g. Mysterious Islands" required />
+                        </div>
+                        <p class="help is-danger"></p>
+                    </div>
+                    <div class="field is-inline-block author-error">
+                        <label class="label">Author</label>
+                        <div class="control">
+                            <input class="input author" type="text" placeholder="e.g. Jules Verene" required />
+                        </div>
+                        <p class="help is-danger"></p>
+                    </div>
+                    <div class="field is-inline-block pages-error">
+                        <label class="label">Pages</label>
+                        <div class="control">
+                            <input class="input pages" type="number" min="1" placeholder="e.g. 307" required />
+                        </div>
+                        <p class="help is-danger"></p>
+                    </div>
+                </div>
+                <div class="is-block">
+                    <div class="field is-inline-block">
+                        <a class="button is-success is-focused" id="read">Read</a>
+                        <div class="buttons is-inline-block">
+                            <span class="button is-link" id="save" >Save Book</span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+            <br>
+            <div class="adder">
+
+            </div>
+        </div>
+    </div>
+</section>
+<script src="main.js"></script>
+</body>
+</html>
