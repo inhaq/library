@@ -5,63 +5,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Library</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 </head>
 <body>
-
 <section class="hero is-primary is-bold">
-    <div class="hero-body">
+    <div class="hero-body" style="padding: 2rem 1.5rem;">
         <div class="container">
-            <h1 class="title">
-                Library
+            <h1 class="title is-family-code">
+                📚Library
             </h1>
             <h2 class="subtitle">
-                A JS app to store objects
+                JS app to render objects {📙}
             </h2>
         </div>
     </div>
 </section>
 <section class="hero is-primary">
-    <div class="hero-body" style="min-height: calc(100vh - 160px);">
+    <div class="hero-body" style="min-height: calc(100vh - 130px);">
         <div class="container">
             <form action="" style="min-height: 80px; text-align: center">
-                <div class="is-inline-block">
-                    <div class="field is-inline-block book-error">
+                <div class="is-inline-block" style="position: relative; height: 100px; width: 100%">
+                    <div class="field is-inline-block book-error" style="position: absolute; left: 0; width: 33%;">
                         <label class="label">Book Name</label>
                         <div class="control">
-                            <input class="input book-name" type="text" placeholder="e.g. Mysterious Islands" required />
+                            <input class="input book-name" type="text" placeholder="e.g. Mysterious Islands" required/>
                         </div>
                         <p class="help is-danger"></p>
                     </div>
-                    <div class="field is-inline-block author-error">
+                    <div class="field is-inline-block author-error" style="left: 0; right: 0; width: 33%;">
                         <label class="label">Author</label>
                         <div class="control">
-                            <input class="input author" type="text" placeholder="e.g. Jules Verene" required />
+                            <input class="input author" type="text" placeholder="e.g. Jules Verene" required/>
                         </div>
                         <p class="help is-danger"></p>
                     </div>
-                    <div class="field is-inline-block pages-error">
+                    <div class="field is-inline-block pages-error" style="position: absolute; right: 0; width: 33%;">
                         <label class="label">Pages</label>
                         <div class="control">
-                            <input class="input pages" type="number" min="1" placeholder="e.g. 307" required />
+                            <input class="input pages" type="number" min="1" placeholder="e.g. 307" required/>
                         </div>
                         <p class="help is-danger"></p>
                     </div>
                 </div>
                 <div class="is-block">
                     <div class="field is-inline-block">
-                        <a class="button is-success is-focused" id="read">Read</a>
+                        <a class="button is-success is-focused" id="read" style="width: 120px">Read</a>
                         <div class="buttons is-inline-block">
-                            <span class="button is-link" id="save" >Save Book</span>
+                            <span class="button is-link" id="save">
+                                 Save Book
+                            </span>
                         </div>
                     </div>
                 </div>
-
-
             </form>
             <br>
             <div class="adder">
-
             </div>
         </div>
     </div>

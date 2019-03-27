@@ -1,31 +1,47 @@
+// data
 let myLibrary = [];
 let first = new Book('Tom Sawyer', 'Mark Twain', '120', 'Read');
 let second = new Book('Oldman and the Sea', 'Ernest Hemingway', '320', 'UnRead');
 myLibrary.push(first);
 myLibrary.push(second);
+
+// input selectors
 let bookName = document.querySelector('.book-name');
 let author = document.querySelector('.author');
 let pages = document.querySelector('.pages');
 let read = document.querySelector('#read');
+
+// validation selectors
 let validateBook = bookName.parentNode.nextElementSibling;
 let validateAuthor = author.parentNode.nextElementSibling;
 let validateAPages = pages.parentNode.nextElementSibling;
+
 let add = document.querySelector(".adder");
 
 let saveBook = document.getElementById('save');
+
+// event listeners
 saveBook.addEventListener('click', formInput);
-
 read.addEventListener('click', toggleRead);
-
 document.addEventListener('DOMContentLoaded', render);
+
+// the constructor
 function Book(name, author, pages, read) {
-    // the constructor...
     this.name = name;
     this.author = author;
     this.pages = pages;
     this.read = read;
 }
 
+Book.prototype.togggleRead = function () {
+    if (this.read === 'Read') {
+        this.read = 'UnRead';
+    } else {
+        this.read = 'Read';
+    }
+}
+
+// Add new books to dom
 Book.prototype.addStuff = function () {
     add.insertAdjacentHTML("beforeend", `<div class="card column" data-remove="${myLibrary.length - 1}" style="width: 32%; display: inline-block;margin: 5px;">
                     <header class="card-header" >
@@ -38,22 +54,39 @@ Book.prototype.addStuff = function () {
                     <div class="card-content">
                         <div class="content">
                             ${this.author} <br>
-                            ${this.pages}
+                            ${this.pages} pages
                         </div>
                     </div>
                     <footer class="card-footer">
-                        <a class="button is-fullwidth togg" id="${myLibrary.length - 1}" data-tog="${myLibrary.length - 1}" onclick="toggR(${myLibrary.length - 1})">${this.read}</a>
+                        <a class="button is-fullwidth togg is-info is-rounded" id="${myLibrary.length - 1}" data-tog="${myLibrary.length - 1}" onclick="searchBook(${myLibrary.length - 1})">${this.read}</a>
                     </footer>
                 </div>`);
     renderDelete();
 }
-Book.prototype.togggleRead = function () {
-    if (this.read === 'Read') {
-        this.read = 'UnRead';
-    } else {
-        this.read = 'Read';
+
+// render existing array of books to dom
+function render() {
+    for (let [i, data] of myLibrary.entries()) {
+        add.insertAdjacentHTML("beforeend", `<div class="card column" data-remove="${i}" style="width: 32%; display: inline-block;margin: 5px;">
+                    <header class="card-header" >
+                        <p class="card-header-title">
+                            ${data.name}
+                        </p>
+                        <a href="#" class="card-footer-item delete" id="${i}">Delete</a>
+                        </a>
+                    </header>
+                    <div class="card-content">
+                        <div class="content">
+                            ${data.author} <br>
+                            ${data.pages} pages
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <a class="button is-fullwidth is-info read is-rounded" id="${i}" data-tog="${i}">${data.read}</a>
+                    </footer>
+                </div>`);
     }
-    
+    renderDelete();
 }
 
 function addBookToLibrary(book) {
@@ -73,32 +106,7 @@ function formInput() {
     addBookToLibrary(book);
 }
 
-function render() {
-    for (let [i, data] of myLibrary.entries()) {
-        add.insertAdjacentHTML("beforeend", `<div class="card column" data-remove="${i}" style="width: 32%; display: inline-block;margin: 5px;">
-                    <header class="card-header" >
-                        <p class="card-header-title">
-                            ${data.name}
-                        </p>
-                        <a href="#" class="card-footer-item delete" id="${i}">Delete</a>
-                        </a>
-                    </header>
-                    <div class="card-content">
-                        <div class="content">
-                            ${data.author} <br>
-                            ${data.pages}
-                        </div>
-                    </div>
-                    <footer class="card-footer">
-                        <a class="button is-fullwidth read" id="${i}" data-tog="${i}">${data.read}</a>
-                    </footer>
-                </div>`);
-    }
-
-    renderDelete();
-
-}
-
+// Delete
 function renderDelete() {
     let del = document.querySelectorAll(".delete");
     del.forEach((button) => {
@@ -112,6 +120,21 @@ function renderDelete() {
     }
 }
 
+// Helpers
+function searchBook(a) {
+    myLibrary[a].togggleRead();
+    const readUnreadSingle = document.querySelector(`[data-tog="${a}"]`);
+    readUnreadSingle.textContent = myLibrary[a].read;
+}
+
+window.onload = () => {
+    const readUnread = document.querySelectorAll('.read');
+    readUnread.forEach(function (read) {
+        read.addEventListener('click', function () {
+            searchBook(this.id);
+        })
+    })
+}
 
 // Validations
 function validateForm(book, authorName, bookPages) {
@@ -146,6 +169,7 @@ function toggleRead() {
     }
 }
 
+// Reset form
 function resetForm() {
     bookName.value = '';
     author.value = '';
@@ -153,37 +177,4 @@ function resetForm() {
     read.textContent = "Read";
     read.classList.add('is-success');
     read.classList.remove('is-warning');
-}
-
-function toggR(a){
-    myLibrary[a].togggleRead();
-
-    setTimeout(() => {
-            const readUnreadSingle = document.querySelector(`[data-tog="${a}"]`);
-            let c = myLibrary[a].read;
-            readUnreadSingle.textContent = c;
-        },
-        0)
-}
-
-
-
-function searchBook(a) {
-    myLibrary[a].togggleRead();
-
-    setTimeout(() => {
-            const readUnreadSingle = document.querySelector(`[data-tog="${a}"]`);
-            let c = myLibrary[a].read;
-            readUnreadSingle.textContent = c;
-        },
-        0)
-}
-window.onload = () => {
-    const readUnread = document.querySelectorAll('.read');
-    readUnread.forEach(function (read) {
-        read.addEventListener('click', function () {
-            searchBook(this.id);
-
-        })
-    })
 }
