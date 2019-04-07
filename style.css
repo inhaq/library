@@ -1,0 +1,40 @@
+.top-hero {
+    padding: 2rem 1.5rem;
+}
+
+.btm-hero {
+    min-height: calc(100vh - 130px);
+}
+
+.all-form {
+    min-height: 80px;
+    text-align: center;
+}
+
+.in-form {
+    height: 100px;
+    position: relative;
+    width: 100%;
+}
+
+.book {
+    left: 0;
+    position: absolute;
+    width: 33%;
+}
+
+.authored {
+    left: 0;
+    right: 0;
+    width: 33%;
+}
+
+.page {
+    position: absolute;
+    right: 0;
+    width: 33%;
+}
+
+.saving {
+    width: 120px;
+}
